@@ -8,7 +8,7 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
         println(arg)
     end
 
-    body!(w, """<button onclick='Blink.msg("", "HELLO")'>go</button>""", async=false);
+    body!(w, """<button onclick='Blink.msg("press", "HELLO")'>go</button>""", async=false);
 
     while true
         yield()
