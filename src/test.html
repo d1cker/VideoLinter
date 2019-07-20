@@ -19,6 +19,7 @@
 
       <button type="submit">Upload File</button>
     </form>
+    <input type="button" id="SelectFileButton" value="Select a File"/>
     <!-- <button onclick='Blink.msg("press", "string from HTML")'>from html</button> -->
   </div>
   <script>
@@ -28,10 +29,29 @@
       const path = document.getElementById("filePath").value
       Blink.msg("press", path)
       document.getElementById("filePath").value = ''
-
     }
     pathForm.addEventListener('submit',sendingPath)
 
+
+    //Filesystem module
+    const fs = require("fs")
+    //Dialogs module
+    const { dialog } = require("electron").remote;
+
+    document.getElementById("SelectFileButton").addEventListener("click", () => {
+      dialog.showOpenDialog({
+        properties:['openFile'],
+      }, (file) => {
+        if(file === undefined) {
+          console.log('No file was selected')
+          return;
+        }
+
+        const filePath = file[0]
+        Blink.msg("press", filePath)
+        alert("File uploaded")
+      })
+    }, false)
     
   </script>
 </body>
