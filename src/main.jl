@@ -8,8 +8,13 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
         println(arg)
     end
 
-    body!(w, """<button onclick='Blink.msg("press", "HELLO")'>go</button>""", async=false);
 
+    # body!(w, """<button onclick='Blink.msg("press", "HELLO")'>go</button>""", async=false);
+    f = open("src/test.html") do file
+        read(file,String)
+    end
+
+    body!(w,f)
     while true
         yield()
     end

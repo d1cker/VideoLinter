@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body{
+      background-color: rgba(114, 186, 249, 0.845);
+  }
+  </style>
+  <title>Test HTML</title>
+</head>
+<body class="blink-show">
+  <div>
+      
+      <button id="SelectFileButton">Select a file</button>
+
+  </div>
+  <script>
+    //Filesystem module
+    const fs = require("fs")
+    //Dialogs module
+    const { dialog } = require("electron").remote;
+
+    document.getElementById("SelectFileButton").addEventListener("click", () => {
+      dialog.showOpenDialog({
+        properties:['openFile'],
+        filters: [
+         { name: 'Movies', extensions: ['mkv', 'avi', 'mp4'] },
+        ]
+      }, (file) => {
+        if(file === undefined) {
+          console.log('No file was selected')
+          return;
+        }
+
+        const filePath = file[0]
+        Blink.msg("press", filePath)
+        alert("File uploaded")
+      })
+    }, false)
+    
+  </script>
+</body>
+</html>

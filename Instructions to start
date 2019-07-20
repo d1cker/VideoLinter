@@ -1,0 +1,9 @@
+In the terminal:
+$ julia
+$ include("src/main.jl")
+$ julia_main(["stam"])
+
+
+alternativly: 
+$ include("src/main.jl"); julia_main(["bla"])
+
