@@ -41,6 +41,9 @@
     document.getElementById("SelectFileButton").addEventListener("click", () => {
       dialog.showOpenDialog({
         properties:['openFile'],
+        filters: [
+         { name: 'Movies', extensions: ['mkv', 'avi', 'mp4'] },
+        ]
       }, (file) => {
         if(file === undefined) {
           console.log('No file was selected')
