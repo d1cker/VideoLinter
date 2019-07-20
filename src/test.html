@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body{
+      background-color: rgba(114, 186, 249, 0.845);
+  }
+  </style>
+  <title>Test HTML</title>
+</head>
+<body class="blink-show">
+  <div>
+    <form id="PathForm">
+      <label >put your file here</label>
+      <input id="filePath" type="text"> 
+
+      <button type="submit">Upload File</button>
+    </form>
+    <!-- <button onclick='Blink.msg("press", "string from HTML")'>from html</button> -->
+  </div>
+  <script>
+    const pathForm = document.getElementById("PathForm")
+    function sendingPath(event){
+      event.preventDefault()
+      const path = document.getElementById("filePath").value
+      Blink.msg("press", path)
+      document.getElementById("filePath").value = ''
+
+    }
+    pathForm.addEventListener('submit',sendingPath)
+
+    
+  </script>
+</body>
+</html>
