@@ -7,9 +7,13 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
     handle(w, "press") do arg
         println(arg)
     end
+    
     load!(w, "src/init.js")
     load!(w, "src/style.css")
     body!(w, "<script>initBody()</script>")
-    
+   
+    while true
+        yield()
+    end
     return 0;
 end
