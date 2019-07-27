@@ -7,16 +7,9 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
     handle(w, "press") do arg
         println(arg)
     end
-
-
-    # body!(w, """<button onclick='Blink.msg("press", "HELLO")'>go</button>""", async=false);
-    f = open("src/test.html") do file
-        read(file,String)
-    end
-
-    body!(w,f)
-    while true
-        yield()
-    end
+    load!(w, "src/init.js")
+    load!(w, "src/style.css")
+    body!(w, "<script>initBody()</script>")
+    
     return 0;
 end
