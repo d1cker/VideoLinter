@@ -1,0 +1,27 @@
+
+body{
+  background-color: rgba(114, 186, 249, 0.845);
+  margin:auto;
+  font-family: 'Lato', sans-serif;
+}
+.uploads{
+  margin: auto;
+  width: 50%;
+}
+#drag-file {
+      background-color: rgb(97, 138, 155);
+      color:white;
+      text-align: center;
+      width:300px;
+      height:300px;
+      margin: 10px;
+      padding: 40px;
+  }
+  a {
+    margin: 20px;
+    color: rgba(4, 116, 164, 0.673);
+  }
+  a:hover{
+    cursor: pointer;
+    color: white;
+  }
