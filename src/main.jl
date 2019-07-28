@@ -8,6 +8,7 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
         println(arg)
     end
     
+    load!(w, "src/vue.js")
     load!(w, "src/init.js")
     load!(w, "src/style.css")
     body!(w, "<script>initBody()</script>")

@@ -1,6 +1,22 @@
 
 function initBody() { 
+
+  console.log("Hello Kelley");
+  console.log("Hello Vue", Vue);
+
   const body = document.querySelector("body")
+
+  const appDiv = document.createElement("div");
+  body.appendChild(appDiv);
+
+  const app = new Vue({
+    el: appDiv,
+    template: `<div>{{ message }}</div>`,
+    data: {
+      message: "Hello Vue!"
+    }
+  });
+
   const uploads = document.createElement("div")
   uploads.classList.add("uploads")
 
