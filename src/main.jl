@@ -1,19 +1,14 @@
-using Blink
+using Electron
 
 Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
-    w = Window(async=false)
 
-    body!(w, "Hello World")
-    handle(w, "press") do arg
-        println(arg)
-    end
-    
-    load!(w, "src/init.js")
-    load!(w, "src/style.css")
-    body!(w, "<script>initBody()</script>")
-   
+    w = Window(URI("file:///"*joinpath(@__DIR__,"dist/index.html")))
+
+    ch = msgchannel(w)
+
     while true
-        yield()
+        msg = take!(ch)
+        println(msg)
     end
     return 0;
 end
