@@ -8,7 +8,7 @@ function video_scan(filename::String)
     N=vid.width*vid.height
 
     frame_num = 1
-    black_list = [];
+    black_list = Int[];
     while !eof(vid)
         read!(vid, img)
         rgb_sum = sum(img)
@@ -17,7 +17,7 @@ function video_scan(filename::String)
         end
         frame_num+=1;
     end
-    println(black_list)
+    return black_list
 end
 
 end
