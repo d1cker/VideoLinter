@@ -12,6 +12,7 @@
   "dependencies": {
     "blink": "^5.0.1",
     "core-js": "^2.6.5",
+    "epic-spinners": "^1.1.0",
     "julia": "^1.0.0",
     "vue": "^2.6.10"
   },

@@ -13,7 +13,7 @@
           :size="200"
           color="#0c1765"
         />
-        <p>Analizing file...</p>
+        <p>Analyzing Video...</p>
     </div>
     
   </div>
