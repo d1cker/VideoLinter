@@ -1,5 +1,6 @@
 In the terminal:
 $ julia
+$ import Pkg; Pkg.add("VideoIO")  //to install the VideoIO package.
 $ include("src/main.jl")
 $ julia_main(["stam"])
 
