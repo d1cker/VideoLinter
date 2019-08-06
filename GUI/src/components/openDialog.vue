@@ -16,9 +16,7 @@ export default {
       console.log(file)
       sendMessageToJulia(file)
       alert("File uploaded")
-
-
-      
+      this.$emit('file-uploaded')
     }
   }
 }

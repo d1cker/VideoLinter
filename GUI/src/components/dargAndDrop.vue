@@ -35,6 +35,7 @@ export default {
                 console.log(f.path)
                 sendMessageToJulia(f.path)
                 alert("File uploaded")
+                this.$emit('file-uploaded')
               } else {
                 alert("The file is not a video file.\n Allowed formats: mkv, avi, mp4")
               }
@@ -61,6 +62,7 @@ export default {
         width:300px;
         height:300px;
         margin-left: 30px;
+        margin-bottom: 20px;
         padding: 40px;
         border-radius: 2%;
         border: 1px solid rgb(84, 82, 82);
