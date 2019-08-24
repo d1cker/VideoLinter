@@ -1,6 +1,6 @@
 In the terminal:
 $ julia
-$ import Pkg; Pkg.add("VideoIO")  //to install the VideoIO package.
+$ import Pkg; Pkg.add("VideoIO");Pkg.add("Images");Pkg.add("JSExpr"); //TODO: make dependencies file
 $ include("src/main.jl")
 $ julia_main(["stam"])
 

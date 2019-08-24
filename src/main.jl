@@ -1,4 +1,4 @@
-using Electron
+using Electron, JSExpr
 include("VideoLinter.jl")
 
 Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
@@ -11,12 +11,13 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
         msg = take!(ch)
         println("file:",msg)
         println("start linting")
-        black_frames = VideoLinter.video_scan(msg)
-        js_black_frames = "var black_frames=$black_frames"
-        println("black frames:", black_frames)
-        println("js black frames:", js_black_frames)
-        run(w, js_black_frames)
-        run(w, "console.log(black_frames)")
+        results = VideoLinter.video_scan(msg)
+        JSreslts = @js $results
+        println(JSreslts)
+        println("var results = $JSreslts")
+        run(w,"var results = $JSreslts")
+        #run(w, js_black_frames)
+        #run(w, "console.log(black_frames)")
         println("done")
     end
     return 0;
