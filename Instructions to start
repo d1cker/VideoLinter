@@ -8,3 +8,7 @@ $ julia_main(["stam"])
 alternativly: 
 $ include("src/main.jl"); julia_main(["bla"])
 
+path to results variable in Vue: 
+App.$children[0].results
+App.$children[0].resultsReady  // boolean
+
