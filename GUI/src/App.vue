@@ -15,6 +15,9 @@
         />
         <p>Analyzing Video...</p>
     </div>
+    <div v-if="resultsReady" class="file_results">
+      <h1>Ready</h1>
+    </div>
     
   </div>
 </template>
@@ -36,7 +39,9 @@ export default {
   data(){
     return {
       fileUpload: false,
-      dataReady: false
+      dataReady: false,
+      results: {},
+      resultsReady: false
     }
   },
   methods: {
