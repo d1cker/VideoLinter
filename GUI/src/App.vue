@@ -16,7 +16,7 @@
         />
       </div>
         <p>Analyzing Video...</p>
-        <progressBar :percentageFromApp="progressPercentage"/>
+        <progressBar :percentage="progressPercentage"/>
     </div>
     <div v-if="resultsReady" class="file_results">
       <h1>Ready</h1>

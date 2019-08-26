@@ -1,6 +1,5 @@
 <template>
   <div class="progressBar">
-    <div>{{ percentageFromApp }}%</div>
     <div class="display-percentage">{{ percent }}%</div>
     <div class="loading-bar">
       <div class="percentage" :style="{'width' : percentage + '%'}">
@@ -14,12 +13,7 @@
 import { setInterval, clearInterval } from 'timers';
 export default {
   name:'progressBar',
-  props: ['percentageFromApp'],
-  data: () => {
-    return {
-      percentage: 0,
-    }
-  },
+  props: ['percentage'],
   computed: {
     percent(){
       return this.percentage.toFixed()
@@ -31,7 +25,7 @@ export default {
         this.percentage += .1;
       } else 
       clearInterval(intval)
-    },10)
+    },10) //TODO: delete later when percentage comes from backend
   },
 }
 </script>
