@@ -8,7 +8,12 @@ $ julia_main(["stam"])
 alternativly: 
 $ include("src/main.jl"); julia_main(["bla"])
 
+path to progress percentage:
+App.$children[0].progressPercentage //number between 0-100. example: App.$children[0].progressPercentage = 100
+
 path to results variable in Vue: 
-App.$children[0].results
-App.$children[0].resultsReady  // boolean
+App.$children[0].results 
+App.$children[0].resultsReady  // boolean. example: App.$children[0].resultsReady = true
+
+
 

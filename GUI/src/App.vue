@@ -8,12 +8,15 @@
       <openDialog @file-uploaded="updateFile"/>
     </div>
     <div v-if="fileUpload" class="loading">
+      <div class="spinner">
         <pixel-spinner
           :animation-duration="2000"
           :size="200"
           color="#0c1765"
         />
+      </div>
         <p>Analyzing Video...</p>
+        <progressBar :percentage="progressPercentage"/>
     </div>
     <div v-if="resultsReady" class="file_results">
       <h1>Ready</h1>
@@ -25,7 +28,7 @@
 <script>
 import openDialog from './components/openDialog'
 import dragAndDrop from './components/dargAndDrop'
-import { FingerprintSpinner } from 'epic-spinners'
+import progressBar from './components/progressBar'
 import { PixelSpinner } from 'epic-spinners'
 
 export default {
@@ -33,13 +36,14 @@ export default {
   components: {
     dragAndDrop,
     openDialog,
-    FingerprintSpinner,
+    progressBar,
     PixelSpinner
   },
   data(){
     return {
       fileUpload: false,
       dataReady: false,
+      progressPercentage: 0,
       results: {},
       resultsReady: false
     }
@@ -82,5 +86,11 @@ h1 {
 .loading p {
   font-size: 28px;
   font-family: 'Blinker', sans-serif;
+}
+
+.spinner{
+  margin: auto;
+  width: 50%;
+
 }
 </style>
