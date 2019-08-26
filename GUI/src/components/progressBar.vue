@@ -1,6 +1,6 @@
 <template>
   <div class="progressBar">
-    <div>{{ percent }}%</div>
+    <div class="display-percentage">{{ percent }}%</div>
     <div class="loading-bar">
       <div class="percentage" :style="{'width' : percentage + '%'}">
 
@@ -38,6 +38,11 @@ export default {
   .progressBar {
     color: #555;
   }
+  
+  .display-percentage {
+    padding-bottom: 10px;
+  }
+
   .loading-bar {
     position: relative;
     width: 400px;
@@ -46,7 +51,7 @@ export default {
     overflow: hidden;
     border-bottom-color: 1px solid #ddd;
     box-shadow: inset 0 1px 2px rgba($color: #000, $alpha: .4),
-                      0 -1px 1px #fff, 0 1px 0 #fff;
+                      0 -1px 1px #333, 0 1px 0 #555;
     .percentage {
       position: absolute;
       top: 1px; left: 1px; right: 1px;
