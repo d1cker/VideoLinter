@@ -1,5 +1,6 @@
 <template>
   <div class="progressBar">
+    <div>{{ percentageFromApp }}%</div>
     <div class="display-percentage">{{ percent }}%</div>
     <div class="loading-bar">
       <div class="percentage" :style="{'width' : percentage + '%'}">
@@ -13,6 +14,7 @@
 import { setInterval, clearInterval } from 'timers';
 export default {
   name:'progressBar',
+  props: ['percentageFromApp'],
   data: () => {
     return {
       percentage: 0,
@@ -38,7 +40,7 @@ export default {
   .progressBar {
     color: #555;
   }
-  
+
   .display-percentage {
     padding-bottom: 10px;
   }

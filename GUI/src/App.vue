@@ -16,7 +16,7 @@
         />
       </div>
         <p>Analyzing Video...</p>
-        <progressBar/>
+        <progressBar :percentageFromApp="progressPercentage"/>
     </div>
     <div v-if="resultsReady" class="file_results">
       <h1>Ready</h1>
@@ -43,6 +43,7 @@ export default {
     return {
       fileUpload: false,
       dataReady: false,
+      progressPercentage: 0,
       results: {},
       resultsReady: false
     }
