@@ -3,8 +3,8 @@ include("VideoLinter.jl")
 
 Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
 
-    w = Window(URI("file:///"*joinpath(@__DIR__,"dist/index.html")))
-
+    w = Window(URI("file:///"*pwd()*"/src/dist/index.html"))
+    println(pwd())
     ch = msgchannel(w)
 
     while true
@@ -13,9 +13,8 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
         println("start linting")
         results = VideoLinter.video_scan(msg)
         JSreslts = @js $results
-        println(JSreslts)
-        println("var results = $JSreslts")
         run(w,"var results = $JSreslts")
+        run(w,"var resultsReady=true")
         #run(w, js_black_frames)
         #run(w, "console.log(black_frames)")
         println("done")
