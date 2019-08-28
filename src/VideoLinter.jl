@@ -2,31 +2,26 @@ module VideoLinter
 
 using VideoIO, Images, Statistics
 
-function video_scan(filename::String)
-    vid=VideoIO.openvideo(filename)
-    img=read(vid)
-    N=vid.width*vid.height
-
-    frame_num = 1
-    black = Int[];
-    focus = Int[];
-    while !eof(vid)
-        # get a frame
-        read!(vid, img)
-        # check for black frame
-        rgb_sum = sum(img)
-        if rgb_sum.r/N < 0.01 && rgb_sum.g/N < 0.01 && rgb_sum.b/N < 0.01
-            push!(black, frame_num)
-        end
-        # check for blurry frame
-        imgg=Gray.(img)
-        imgl=imfilter(imgg, Kernel.Laplacian())
-        if var(imgl) <= 5e-5
-            push!(focus,frame_num)
-        end
-        frame_num+=1;
+function is_black(img)
+    H,W = size(img)
+    pixels = H*W;
+    # check for black frame
+    rgb_sum = sum(img)
+    if rgb_sum.r/pixels < 0.01 && rgb_sum.g/pixels < 0.01 && rgb_sum.b/pixels < 0.01
+        return true
     end
-    return Dict("black"=>black,"focus"=>focus)
+    return false
+end
+
+
+function is_blurry(img)
+    # check for blurry frame
+    imgg=Gray.(img)
+    imgl=imfilter(imgg, Kernel.Laplacian())
+    if var(imgl) <= 5e-5
+       return true
+    end
+    return false
 end
 
 end
