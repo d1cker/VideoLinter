@@ -20,11 +20,11 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
             VideoLinter.is_black(img)  && append!(results["black"],i)
             VideoLinter.is_blurry(img) && append!(results["focus"],i)
             # update the progressbar
-            run(w,"var progressPercentage=$(i/frames*100)")
+            run(w,"App.\$children[0].progressPercentage=$(i/frames*100)")
         end
         JSreslts = @js $results
-        run(w,"var results = $JSreslts")
-        run(w,"var resultsReady=true")
+        run(w,"App.\$children[0].results = $JSreslts")
+        run(w,"App.\$children[0].resultsReady=true")
         println("done")
     end
     return 0;
