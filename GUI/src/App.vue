@@ -42,7 +42,6 @@ export default {
   data(){
     return {
       fileUpload: false,
-      dataReady: false,
       progressPercentage: 0,
       results: {},
       resultsReady: false
