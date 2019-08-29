@@ -10,7 +10,7 @@
 </template>
   
 <script>
-import { setInterval, clearInterval } from 'timers';
+// import { setInterval, clearInterval } from 'timers';
 export default {
   name:'progressBar',
   props: ['percentage'],
@@ -19,14 +19,14 @@ export default {
       return this.percentage.toFixed()
     }
   },
-  created(){
-    const intval = setInterval(() => {
-      if (this.percentage < 100) {
-        this.percentage += .1;
-      } else 
-      clearInterval(intval)
-    },10) //TODO: delete later when percentage comes from backend
-  },
+  // created(){
+  //   const intval = setInterval(() => {
+  //     if (this.percentage < 100) {
+  //       this.percentage += .1;
+  //     } else 
+  //     clearInterval(intval)
+  //   },10) //TODO: delete later when percentage comes from backend
+  // },
 }
 </script>
 

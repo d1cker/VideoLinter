@@ -7,7 +7,7 @@
       <dragAndDrop @file-uploaded="updateFile"/>
       <openDialog @file-uploaded="updateFile"/>
     </div>
-    <div v-if="fileUpload" class="loading">
+    <div v-if="fileUpload && !resultsReady" class="loading">
       <div class="spinner">
         <pixel-spinner
           :animation-duration="2000"
@@ -46,7 +46,6 @@ export default {
   data(){
     return {
       fileUpload: false,
-      dataReady: false,
       progressPercentage: 0,
       results: {
         "focus":[43,49,52,57,94,99,107,112,128,139,160,162],

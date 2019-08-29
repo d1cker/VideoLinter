@@ -1,23 +1,30 @@
-using Electron, JSExpr
+using Electron, JSExpr, VideoIO
 include("VideoLinter.jl")
 
 Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
 
-    w = Window(URI("file:///"*joinpath(@__DIR__,"dist/index.html")))
-
+    w = Window(URI("file:///"*pwd()*"/src/dist/index.html"))
     ch = msgchannel(w)
-
     while true
-        msg = take!(ch)
-        println("file:",msg)
+        filename = take!(ch)
+        println("file:",filename)
         println("start linting")
-        results = VideoLinter.video_scan(msg)
+        vid=VideoIO.openvideo(filename)
+        results = Dict("black"=>Int[],"focus"=>Int[])
+        img=read(vid)
+        seekstart(vid)
+        frames=vid.stream_info.stream.nb_frames;
+        for i = 1:frames-1
+            read!(vid, img)
+            # run the checks
+            VideoLinter.is_black(img)  && append!(results["black"],i)
+            VideoLinter.is_blurry(img) && append!(results["focus"],i)
+            # update the progressbar
+            run(w,"App.\$children[0].progressPercentage=$(i/frames*100)")
+        end
         JSreslts = @js $results
-        println(JSreslts)
-        println("var results = $JSreslts")
-        run(w,"var results = $JSreslts")
-        #run(w, js_black_frames)
-        #run(w, "console.log(black_frames)")
+        run(w,"App.\$children[0].results = $JSreslts")
+        run(w,"App.\$children[0].resultsReady=true")
         println("done")
     end
     return 0;
