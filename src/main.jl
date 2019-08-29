@@ -5,7 +5,7 @@ Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
 
     w = Window(URI("file:///"*pwd()*"/src/dist/index.html"))
     ch = msgchannel(w)
-    while true
+    while w.exists
         filename = take!(ch)
         println("file:",filename)
         println("start linting")
