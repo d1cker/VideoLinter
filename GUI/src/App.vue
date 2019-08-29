@@ -7,7 +7,7 @@
       <dragAndDrop @file-uploaded="updateFile"/>
       <openDialog @file-uploaded="updateFile"/>
     </div>
-    <div v-if="fileUpload" class="loading">
+    <div v-if="fileUpload && !resultsReady" class="loading">
       <div class="spinner">
         <pixel-spinner
           :animation-duration="2000"
