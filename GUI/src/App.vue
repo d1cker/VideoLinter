@@ -19,21 +19,22 @@
         <p>Analyzing Video...</p>
         <progressBar :percentage="progressPercentage"/>
     </div>
-    
+
     <div v-if="resultsReady" class="file_results">
       <h1>Results</h1>
+      <button @click="resetResults">Upload another file</button>
       <p>We found bad frames:</p>
 
       <span>Black frames:</span>
       <ul>
-        <li v-for=" value in results.black" v-bind:key="value">
+        <li v-for="value in results.black" v-bind:key="value">
           {{ value }}
         </li>
       </ul>
 
       <span>Out of focus:</span>
       <ul>
-        <li v-for=" value in results.focus" v-bind:key="value">
+        <li v-for="value in results.focus" v-bind:key="value">
           {{ value }}
         </li>
       </ul>
@@ -67,6 +68,12 @@ export default {
   methods: {
     updateFile(){
       return this.fileUpload = true
+    },
+    resetResults(event){
+      this.fileUpload = false
+      this.progressPercentage = 0,
+      this.results = {},
+      this.resultsReady = false
     }
   }
 }
