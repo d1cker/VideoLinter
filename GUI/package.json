@@ -1,5 +1,5 @@
 {
-  "name": "electron-with-vue",
+  "name": "video_linter",
   "main": "electron.js",
   "version": "0.1.0",
   "private": true,

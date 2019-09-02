@@ -22,7 +22,7 @@
 
     <div v-if="resultsReady" class="file_results">
       <h1>Results</h1>
-      <button @click="resetResults">Upload another file</button>
+      <button id="reset-button" @click="resetResults">Upload another file</button>
       <div v-if="!results.black[0] && !results.focus[0]">We did not found any bad frames <br> Your video is perfect!</div>
       <div v-if="results.black[0] || results.focus[0]">
         <p>We found bad frames:</p>
@@ -117,6 +117,64 @@ h1 {
 .spinner{
   margin: auto;
   width: 50%;
-
 }
+
+#reset-button {
+  background-color: rgb(102, 143, 208);
+  text-align: center;
+  height: auto;
+  --offset: 10px;
+  --border-size: 2px;
+  padding: 1.5em 3em ;
+	/* appearance: none; */
+	border: 0;
+	/* background: transparent; */
+  color: #ede3e3;
+  letter-spacing: .25em;
+  font-size: 14px;
+	outline: none;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background .8s ease;
+}
+
+#reset-button:hover {
+  background-color: #2D5BA3;
+  color: white;
+  border: 1px solid rgb(26, 54, 99);
+  transition:800ms ease all;
+	font-weight: bold;
+}
+/* .check {
+  display: flex;
+  float: right;
+  width: 110px;
+  height: 60px;
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+  left: 15px;
+  --offset: 10px;
+  --border-size: 2px;
+  padding: 1.5em 3em ;
+	appearance: none;
+	border: 0;
+	background: transparent;
+  color: #ede3e3;
+  letter-spacing: .25em;
+	outline: none;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background .8s ease;
+}
+
+.check:hover {
+    background:#ede3e3;
+    color:rgba(5, 60, 47, 0.803);
+    border: 1px solid rgb(7, 69, 54);
+    transition:800ms ease all;
+	  font-weight: bold;
+} */
 </style>
