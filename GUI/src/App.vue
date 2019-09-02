@@ -23,21 +23,24 @@
     <div v-if="resultsReady" class="file_results">
       <h1>Results</h1>
       <button @click="resetResults">Upload another file</button>
-      <p>We found bad frames:</p>
+      <div v-if="!results.black[0] && !results.focus[0]">We did not found any bad frames <br> Your video is perfect!</div>
+      <div v-if="results.black[0] || results.focus[0]">
+        <p>We found bad frames:</p>
 
-      <span>Black frames:</span>
-      <ul>
-        <li v-for="value in results.black" v-bind:key="value">
-          {{ value }}
-        </li>
-      </ul>
+        <span v-if="results.black[0]">Black frames:</span>
+        <ul>
+          <li v-for="value in results.black" v-bind:key="value">
+            {{ value }}
+          </li>
+        </ul>
 
-      <span>Out of focus:</span>
-      <ul>
-        <li v-for="value in results.focus" v-bind:key="value">
-          {{ value }}
-        </li>
-      </ul>
+        <span v-if="results.focus[0]">Out of focus:</span>
+        <ul>
+          <li v-for="value in results.focus" v-bind:key="value">
+            {{ value }}
+          </li>
+        </ul>
+        </div>
     </div>
     
   </div>
