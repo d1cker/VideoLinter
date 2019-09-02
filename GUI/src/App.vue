@@ -28,16 +28,16 @@
         <p>We found bad frames:</p>
 
         <span v-if="results.black[0]">Black frames:</span>
-        <ul>
+        <ul class="frames-list">
           <li v-for="value in results.black" v-bind:key="value">
-            {{ value }}
+            {{ value }}, 
           </li>
         </ul>
 
         <span v-if="results.focus[0]">Out of focus:</span>
-        <ul>
+        <ul class="frames-list">
           <li v-for="value in results.focus" v-bind:key="value">
-            {{ value }}
+            {{ value }}, 
           </li>
         </ul>
         </div>
@@ -122,14 +122,13 @@ h1 {
 #reset-button {
   background-color: rgb(102, 143, 208);
   text-align: center;
+  margin: 20px;
   height: auto;
   --offset: 10px;
   --border-size: 2px;
   padding: 1.5em 3em ;
-	/* appearance: none; */
 	border: 0;
-	/* background: transparent; */
-  color: #ede3e3;
+  color: black;
   letter-spacing: .25em;
   font-size: 14px;
 	outline: none;
@@ -142,39 +141,17 @@ h1 {
 #reset-button:hover {
   background-color: #2D5BA3;
   color: white;
+  margin: 20px;
   border: 1px solid rgb(26, 54, 99);
   transition:800ms ease all;
 	font-weight: bold;
 }
-/* .check {
-  display: flex;
-  float: right;
-  width: 110px;
-  height: 60px;
-  margin-top: 10px;
-  text-align: center;
-  position: relative;
-  left: 15px;
-  --offset: 10px;
-  --border-size: 2px;
-  padding: 1.5em 3em ;
-	appearance: none;
-	border: 0;
-	background: transparent;
-  color: #ede3e3;
-  letter-spacing: .25em;
-	outline: none;
-	cursor: pointer;
-	border-radius: 5px;
-	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
-  transition: background .8s ease;
-}
 
-.check:hover {
-    background:#ede3e3;
-    color:rgba(5, 60, 47, 0.803);
-    border: 1px solid rgb(7, 69, 54);
-    transition:800ms ease all;
-	  font-weight: bold;
-} */
+.frames-list {
+  margin-right: 25px;
+}
+.frames-list  li {
+  display: inline;
+  list-style: none;
+}
 </style>
