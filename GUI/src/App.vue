@@ -7,6 +7,7 @@
       <dragAndDrop @file-uploaded="updateFile"/>
       <openDialog @file-uploaded="updateFile"/>
     </div>
+
     <div v-if="fileUpload && !resultsReady" class="loading">
       <div class="spinner">
         <pixel-spinner
@@ -18,10 +19,24 @@
         <p>Analyzing Video...</p>
         <progressBar :percentage="progressPercentage"/>
     </div>
+    
     <div v-if="resultsReady" class="file_results">
-      <h1>Ready</h1>
-      <div>{{ results }}</div>
-      <vue-horizontal-timeline :items="items"/>
+      <h1>Results</h1>
+      <p>We found bad frames:</p>
+
+      <span>Black frames:</span>
+      <ul>
+        <li v-for=" value in results.black" v-bind:key="value">
+          {{ value }}
+        </li>
+      </ul>
+
+      <span>Out of focus:</span>
+      <ul>
+        <li v-for=" value in results.focus" v-bind:key="value">
+          {{ value }}
+        </li>
+      </ul>
     </div>
     
   </div>
@@ -32,7 +47,6 @@ import openDialog from './components/openDialog'
 import dragAndDrop from './components/dargAndDrop'
 import progressBar from './components/progressBar'
 import { PixelSpinner } from 'epic-spinners'
-import { VueHorizontalTimeline } from 'vue-horizontal-timeline'
 
 export default {
   name: 'app',
@@ -41,31 +55,14 @@ export default {
     openDialog,
     progressBar,
     PixelSpinner,
-    VueHorizontalTimeline
   },
   data(){
     return {
       fileUpload: false,
       progressPercentage: 0,
-      results: {
-        "focus":[43,49,52,57,94,99,107,112,128,139,160,162],
-        "black":[46,47,48,49,97,98,99,100,101,148,149,150,151]
-        },
-      resultsReady: true,
-      items:[
-        {
-        title: 'Title example 1',
-        content: 'black'
-        },
-        {
-        title: 'Title example 2',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ex dolor, malesuada luctus scelerisque ac, auctor vitae risus. Vivamus risus dolor, faucibus a bibendum quis, facilisis eget odio.'
-        },
-        {
-        title: 'Title example 3',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ex dolor, malesuada luctus scelerisque ac, auctor vitae risus. Vivamus risus dolor, faucibus a bibendum quis, facilisis eget odio.'
-        },
-    ]}
+      results:{},
+      resultsReady: false,
+    }
   },
   methods: {
     updateFile(){
