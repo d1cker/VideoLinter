@@ -5,6 +5,8 @@
 # VideoLinter
 Simple project for automatic video checking (black screens, color saturation, etc).
 
+![](demo.gif)
+
 ## contributors
 This project is developed by 
 - [Or Dicker](https://github.com/d1cker)
