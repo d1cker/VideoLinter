@@ -7,6 +7,7 @@
       <dragAndDrop @file-uploaded="updateFile"/>
       <openDialog @file-uploaded="updateFile"/>
     </div>
+
     <div v-if="fileUpload && !resultsReady" class="loading">
       <div class="spinner">
         <pixel-spinner
@@ -18,8 +19,28 @@
         <p>Analyzing Video...</p>
         <progressBar :percentage="progressPercentage"/>
     </div>
+
     <div v-if="resultsReady" class="file_results">
-      <h1>Ready</h1>
+      <h1>Results</h1>
+      <button id="reset-button" @click="resetResults">Upload another file</button>
+      <div v-if="!results.black[0] && !results.focus[0]">We did not found any bad frames <br> Your video is perfect!</div>
+      <div v-if="results.black[0] || results.focus[0]">
+        <p>We found bad frames:</p>
+
+        <span v-if="results.black[0]">Black frames:</span>
+        <ul class="frames-list">
+          <li v-for="value in results.black" v-bind:key="value">
+            {{ value }}, 
+          </li>
+        </ul>
+
+        <span v-if="results.focus[0]">Out of focus:</span>
+        <ul class="frames-list">
+          <li v-for="value in results.focus" v-bind:key="value">
+            {{ value }}, 
+          </li>
+        </ul>
+        </div>
     </div>
     
   </div>
@@ -37,20 +58,25 @@ export default {
     dragAndDrop,
     openDialog,
     progressBar,
-    PixelSpinner
+    PixelSpinner,
   },
   data(){
     return {
       fileUpload: false,
-      dataReady: false,
       progressPercentage: 0,
-      results: {},
-      resultsReady: false
+      results:{},
+      resultsReady: false,
     }
   },
   methods: {
     updateFile(){
       return this.fileUpload = true
+    },
+    resetResults(event){
+      this.fileUpload = false
+      this.progressPercentage = 0,
+      this.results = {},
+      this.resultsReady = false
     }
   }
 }
@@ -91,6 +117,41 @@ h1 {
 .spinner{
   margin: auto;
   width: 50%;
+}
 
+#reset-button {
+  background-color: rgb(102, 143, 208);
+  text-align: center;
+  margin: 20px;
+  height: auto;
+  --offset: 10px;
+  --border-size: 2px;
+  padding: 1.5em 3em ;
+	border: 0;
+  color: black;
+  letter-spacing: .25em;
+  font-size: 14px;
+	outline: none;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background .8s ease;
+}
+
+#reset-button:hover {
+  background-color: #2D5BA3;
+  color: white;
+  margin: 20px;
+  border: 1px solid rgb(26, 54, 99);
+  transition:800ms ease all;
+	font-weight: bold;
+}
+
+.frames-list {
+  margin-right: 25px;
+}
+.frames-list  li {
+  display: inline;
+  list-style: none;
 }
 </style>
