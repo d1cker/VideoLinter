@@ -21,9 +21,13 @@ We also use [Elecron](https://github.com/d1cker/VideoLinter/blob/master/src/main
 ## Screenshots
 
 #### Main screen
-![main screen](https://github.com/d1cker/VideoLinter/blob/master/Screenshot%202019-08-16%20at%2017.33.03.png)
+![main screen](https://github.com/d1cker/VideoLinter/blob/master/Screenshot_Upload_screen.png)
 
 #### Loading animation
-![Loading animation](https://github.com/d1cker/VideoLinter/blob/master/Screenshot%202019-08-16%20at%2017.33.27.png)
+![Loading animation](https://github.com/d1cker/VideoLinter/blob/master/Screenshot_Loading_screen.png)
+
+#### Results screen
+
+![Results screen](https://github.com/d1cker/VideoLinter/blob/master/Screenshot_Results_screen.png)
 
 
