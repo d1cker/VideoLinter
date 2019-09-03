@@ -29,15 +29,15 @@
 
         <span v-if="results.black[0]">Black frames:</span>
         <ul class="frames-list">
-          <li v-for="value in results.black" v-bind:key="value">
-            {{ value }}, 
+          <li v-for="(value, index) in results.black" v-bind:key="value">
+            {{index !== (results.black.length - 1) ? value + ', ':  value }}
           </li>
         </ul>
 
         <span v-if="results.focus[0]">Out of focus:</span>
         <ul class="frames-list">
-          <li v-for="value in results.focus" v-bind:key="value">
-            {{ value }}, 
+          <li v-for="(value, index) in results.focus" v-bind:key="value">
+            {{index !== (results.focus.length - 1) ? value + ', ':  value }}
           </li>
         </ul>
         </div>
