@@ -4,8 +4,12 @@
       <h1>Video Linter</h1>
       <p>Welcome to Video Linter! <br> Upload your video file and the linter will check for bad frames like black frames or silent ones</p>
       <p>There are 2 options to upload a file:</p>
-      <dragAndDrop @file-uploaded="updateFile"/>
-      <openDialog @file-uploaded="updateFile"/>
+      <div class="container">
+        <div class="row align-items-start">
+          <dragAndDrop class="col-sm" @file-uploaded="updateFile"/>
+          <openDialog class="col-sm" @file-uploaded="updateFile"/>
+        </div>
+      </div>
     </div>
 
     <div v-if="fileUpload && !resultsReady" class="loading">
@@ -89,6 +93,7 @@ export default {
 
 body{
   margin:auto;
+  margin-top: 10px;
   background-color: rgba(114, 186, 249, 0.845);
 }
 #app {
