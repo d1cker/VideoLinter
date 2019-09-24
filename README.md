@@ -30,4 +30,26 @@ We also use [Elecron](https://github.com/d1cker/VideoLinter/blob/master/src/main
 
 ![Results screen](https://github.com/d1cker/VideoLinter/blob/master/Screenshot_Results_screen.png)
 
+## `Install and Run the app`
 
+### GUI only
+
+```
+$ git clone git@github.com:d1cker/VideoLinter.git
+$ cd VideoLinter/GUI
+$ npm install
+$ npm run electron
+
+```
+
+###  Full app (juila installing is required)
+
+```
+$ git clone git@github.com:d1cker/VideoLinter.git
+$ cd VideoLinter
+$ npm install
+$ julia
+$ import Pkg; Pkg.add("VideoIO");Pkg.add("Images");Pkg.add("JSExpr"); //TODO: make dependencies file
+$ include("src/main.jl"); julia_main(["bla"])
+
+```
